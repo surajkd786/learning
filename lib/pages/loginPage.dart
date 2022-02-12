@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/routes.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  String name = "";
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -18,8 +24,8 @@ class LoginPage extends StatelessWidget {
             const SizedBox(
               height: 10.0,
             ),
-            const Text(
-              "Welcome",
+            Text(
+              "Welcome $name",
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             Padding(
@@ -32,6 +38,10 @@ class LoginPage extends StatelessWidget {
                       hintText: "Enter User Name",
                       labelText: "UserName",
                     ),
+                    onChanged: (value) {
+                      name = value;
+                      setState(() {});
+                    },
                   ),
                   TextFormField(
                     obscureText: true,
@@ -51,6 +61,29 @@ class LoginPage extends StatelessWidget {
                     style: TextButton.styleFrom(
                         minimumSize: const Size(100.0, 40.0)),
                   )
+                  // Padding(
+                  //   padding: const EdgeInsets.all(20.0),
+                  //   child: InkWell(
+                  //     onTap: () {
+                  //       Navigator.pushNamed(context, MyRoutes.homeRoute);
+                  //     },
+                  //     child: Container(
+                  //       width: 150.0,
+                  //       height: 40.0,
+                  //       alignment: Alignment.center,
+                  //       child: const Text(
+                  //         "Login",
+                  //         style: TextStyle(
+                  //             fontSize: 18,
+                  //             color: Colors.white,
+                  //             fontWeight: FontWeight.bold),
+                  //       ),
+                  //       decoration: BoxDecoration(
+                  //           color: Colors.purple,
+                  //           borderRadius: BorderRadius.circular(10)),
+                  //     ),
+                  //   ),
+                  // )
                 ],
               ),
             ),
